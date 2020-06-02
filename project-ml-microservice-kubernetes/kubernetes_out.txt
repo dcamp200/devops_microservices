@@ -1,0 +1,40 @@
+(.devops) (base) david@Davids-MBP-3 project-ml-microservice-kubernetes % minikube start 
+😄  minikube v1.9.2 on Darwin 10.15.3
+✨  Automatically selected the hyperkit driver. Other choices: docker, virtualbox
+👍  Starting control plane node m01 in cluster minikube
+🔥  Creating hyperkit VM (CPUs=2, Memory=2200MB, Disk=20000MB) ...
+🐳  Preparing Kubernetes v1.18.0 on Docker 19.03.8 ...
+🌟  Enabling addons: default-storageclass, storage-provisioner
+🏄  Done! kubectl is now configured to use "minikube"
+
+❗  /usr/local/bin/kubectl is v1.16.6-beta.0, which may be incompatible with Kubernetes v1.18.0.
+💡  You can also use 'minikube kubectl -- get pods' to invoke a matching version
+(.devops) (base) david@Davids-MBP-3 project-ml-microservice-kubernetes % kubectl get pods
+No resources found in default namespace.
+(.devops) (base) david@Davids-MBP-3 project-ml-microservice-kubernetes % ./run_kubernetes.sh
+pod/predict created
+NAME      READY   STATUS              RESTARTS   AGE
+predict   0/1     ContainerCreating   0          0s
+error: unable to forward port because pod is not running. Current status=Pending
+(.devops) (base) david@Davids-MBP-3 project-ml-microservice-kubernetes % kubectl get pod    
+NAME      READY   STATUS              RESTARTS   AGE
+predict   0/1     ContainerCreating   0          14s
+(.devops) (base) david@Davids-MBP-3 project-ml-microservice-kubernetes % kubectl get pods   
+NAME      READY   STATUS              RESTARTS   AGE
+predict   0/1     ContainerCreating   0          24s
+(.devops) (base) david@Davids-MBP-3 project-ml-microservice-kubernetes % kubectl get pod 
+NAME      READY   STATUS              RESTARTS   AGE
+predict   0/1     ContainerCreating   0          36s
+(.devops) (base) david@Davids-MBP-3 project-ml-microservice-kubernetes % kubectl get pod
+NAME      READY   STATUS              RESTARTS   AGE
+predict   0/1     ContainerCreating   0          62s
+(.devops) (base) david@Davids-MBP-3 project-ml-microservice-kubernetes % kubectl get pod
+NAME      READY   STATUS    RESTARTS   AGE
+predict   1/1     Running   0          108s
+(.devops) (base) david@Davids-MBP-3 project-ml-microservice-kubernetes % ./run_kubernetes.sh
+Error from server (AlreadyExists): pods "predict" already exists
+NAME      READY   STATUS    RESTARTS   AGE
+predict   1/1     Running   0          2m33s
+Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+Handling connection for 8000
